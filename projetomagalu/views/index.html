@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384- 
+    50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <title>MagaNets</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="#home" id="logo">
+                <h1>MagaNets</h1>
+            </a>
+        </div>
+        <nav class="navbar">
+            <ul class="nav row space-between">
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    Cidade: <span id="city"></span>
+                </li>
+                <li>
+                    <i class="fas fa-phone"></i>
+                    <span class="tooltip">
+                        Central de Atendimeto
+                        <span class="tooltiptext">0800-800-800</span>
+                    </span>
+                </li>
+                <li id="listaDesejos">
+                    <i class="fas fa-heart"></i>
+                    <a href="#ListadeDesejos" id="listaDesejo">Lista de desejos</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="search-div">
+            <input type="text" id="search" name="search" class="search-input" placeholder="&#xF002;   Busca" />
+        </div>
+    </header>
+    <main>
+        <h3 id="breadcumb">Home</h3>
+        <div id="loading" class="hide">
+            <img id="loading-image" src="images/load.gif" alt="Loading..." />
+        </div>
+        <div class="products row">
+
+        </div>
+    </main>
+    <script src="javascripts/requests.js"></script>
+    <script src="javascripts/src.js"></script>
+    <script src="javascripts/events.js"></script>
+</body>
+
+</html>
