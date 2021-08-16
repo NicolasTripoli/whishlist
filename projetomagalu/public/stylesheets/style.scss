@@ -107,23 +107,23 @@ body {
         text-align     : center;
     }
 
-    .search-input {
-        width        : 100%;
-        height       : 5vh;
-        border       : none;
-        border-radius: 0.2rem;
-        font-family  : "Font Awesome 5 Free", sans-serif;
-        font-weight  : 900;
-        font-size    : 1rem;
-        padding      : 0px 1rem;
-        outline      : none;
-
-    }
-
     .search-div {
         grid-area: search-div;
         width    : 100%;
         padding  : 10px 0px;
+
+        .search-input {
+            width        : 100%;
+            height       : 5vh;
+            border       : none;
+            border-radius: 0.2rem;
+            font-family  : "Font Awesome 5 Free", sans-serif;
+            font-weight  : 900;
+            font-size    : 1rem;
+            padding      : 0px 1rem;
+            outline      : none;
+
+        }
     }
 
     .fa-phone {
@@ -273,6 +273,13 @@ body {
                 }
             }
 
+
+            .search-div {
+                display        : flex;
+                align-items    : center;
+                justify-content: center;
+            }
+
             .search-div {
                 width    : 80vw;
                 min-width: 10rem;
@@ -301,34 +308,6 @@ body {
                     width: 8rem;
                 }
             }
-        }
-
-        header {
-            display        : flex;
-            flex-direction : column;
-            justify-content: center;
-            align-items    : center;
-
-            .navbar {
-                width    : 80vw;
-                min-width: 10rem;
-
-                ul {
-                    display       : flex;
-                    flex-direction: column;
-                }
-            }
-
-            .search-div {
-                width    : 80vw;
-                min-width: 10rem;
-            }
-        }
-
-        .search-div {
-            display        : flex;
-            align-items    : center;
-            justify-content: center;
         }
 
         main {
