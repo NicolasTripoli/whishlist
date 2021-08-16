@@ -1,6 +1,6 @@
 # WhishList
 
-WhishList é o projeto de teste técnico para o processo seletivo da Magalu, com o conceito de "Lista de Desejos" em um portal com produtos podendo assim adicionar produtos a lista e remove-los.
+WhishList é o projeto de teste técnico para um processo seletivo, com o conceito de "Lista de Desejos" em um portal com produtos podendo assim adicionar produtos a lista e remove-los.
 
 Por não ter especificação das funcionalidade de tela, foram adicionados de acordo o layout solicitado:
 - Busca de Produtos
@@ -12,12 +12,12 @@ Por não ter especificação das funcionalidade de tela, foram adicionados de ac
 ## Tecnologias usadas
 
 - [Node.js](https://nodejs.org/)
-- [expres](https://expressjs.com/pt-br/)
+- [Expres](https://expressjs.com/pt-br/)
 - [Axios](https://github.com/axios/axios)
 - [SASS/SCSS](https://sass-lang.com)
-- [webpack](https://webpack.js.org/)
-- [babel](https://babeljs.io/)
-- [eslint](https://eslint.org/)
+- [Webpack](https://webpack.js.org/)
+- [Babel](https://babeljs.io/)
+- [Eslint](https://eslint.org/)
 
 ## Instalação
 
