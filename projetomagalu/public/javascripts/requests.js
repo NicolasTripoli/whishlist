@@ -7,10 +7,10 @@ function findCity(latitude, longitude) {
         "body": `{"lat":${latitude},"lon":${longitude}}`
     })
         .then(response => {
-            return response.json()
+            return response.json();
         })
         .then(resp => {
-            document.querySelector('#city').textContent = resp.data.address.city
+            document.querySelector('#city').textContent = resp.data.address.city;
         })
         .catch(err => {
             console.error(err);
@@ -23,7 +23,7 @@ async function getAllProducts() {
         "headers": {}
     })
         .then(response => {
-            return response.json()
+            return response.json();
         })
         .catch(err => {
             console.error(err);
@@ -36,7 +36,7 @@ async function removeFavoriteProducts(sku) {
         "headers": {}
     })
         .then(response => {
-            return response.json()
+            return response.json();
         })
         .catch(err => {
             console.error(err);
@@ -49,7 +49,7 @@ async function getAllFavoriteProducts() {
         "headers": {}
     })
         .then(response => {
-            return response.json()
+            return response.json();
         })
         .catch(err => {
             console.error(err);
@@ -65,7 +65,7 @@ async function addFavoriteProducts(sku) {
         "body": JSON.stringify({ sku: sku })
     })
         .then(response => {
-            return response.json()
+            return response.json();
         })
         .catch(err => {
             console.error(err);
