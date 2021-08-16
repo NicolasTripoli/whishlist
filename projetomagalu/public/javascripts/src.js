@@ -4,14 +4,14 @@ function setCity() {
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                findCity(position.coords.latitude, position.coords.longitude)
+                findCity(position.coords.latitude, position.coords.longitude);
             },
             (err) => {
-                document.querySelector('#city').textContent = ' - '
+                document.querySelector('#city').textContent = ' - ';
             }
         )
     } else {
-        document.querySelector('#city').textContent = ' - '
+        document.querySelector('#city').textContent = ' - ';
     }
 }
 
@@ -36,7 +36,7 @@ function renderProducts(products = [], locale) {
                 <div class="center">
                     <img src="${element.image}" alt="${element.title}" class="product-image" id="image">
                     <p id="title">${element.title}</p>
-                    <p class="price"><span id="currencyFormat">${element.currencyFormat}</span><span id="price">${element.price.toLocaleString()}</span></p>
+                    <p class="price"><span id="currencyFormat">${element.currencyFormat}</span><span id="price">${element.price.toLocaleString(undefined, {minimumFractionDigits: 2})}</span></p>
                 </div>
              </div>`;
 
@@ -80,7 +80,6 @@ function changePage(locale) {
                     })
                     return (isFavorite) ? true : false;
                 })
-                console.log(ajustProducts)
                 SCREENPRODUCTS = ajustProducts;
 
                 renderProducts(SCREENPRODUCTS, locale);
@@ -96,10 +95,9 @@ function changePage(locale) {
                         let isFavorite = favorites.data.find(item => {
                             return item.sku == element.sku;
                         })
-                        element.favorite = (isFavorite) ? true : false
+                        element.favorite = (isFavorite) ? true : false;
                         return element;
                     })
-                    console.log(ajustProducts)
                     SCREENPRODUCTS = ajustProducts;
                 } else {
                     SCREENPRODUCTS = products.products;
@@ -122,8 +120,12 @@ function toggleFavorite(element) {
     target.classList.toggle("active");
     if (target.classList.toString().includes('active')) {
         addFavoriteProducts(target.id);
+        let index = SCREENPRODUCTS.findIndex(e=> e.sku == target.id);
+        SCREENPRODUCTS[index].favorite = true;
     } else {
         removeFavoriteProducts(target.id);
+        let index = SCREENPRODUCTS.findIndex(e=> e.sku == target.id);
+        SCREENPRODUCTS[index].favorite = false;
     }
 }
 
@@ -134,5 +136,5 @@ function deleteFavorite(target) {
 }
 
 function toggleLoad() {
-    document.querySelector('#loading').classList.toggle("hide")
+    document.querySelector('#loading').classList.toggle("hide");
 }
