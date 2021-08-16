@@ -8,7 +8,7 @@ function setEventesHendler() {
     document.querySelector('#search').addEventListener('keyup', (element) => {
         filterProducts(element.target.value);
     }, false)
-    document.querySelector('#listaDesejo').addEventListener('click', (element) => {
+    document.querySelector('#listaDesejos').addEventListener('click', (element) => {
         changePage(true);
     }, false)
     document.querySelector('#logo').addEventListener('click', (element) => {
@@ -22,4 +22,8 @@ function setFavoriteEvent() {
             toggleFavorite(element.target)
         }, false)
     })
+
+    document.querySelector('.home').addEventListener('click', (element) => {
+        changePage(false);
+    }, false)
 }
