@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const axios = require('axios');
+var axios = require('axios');
+var express = require('express');
+var { addFavoriteProducts, getAllFavoriteProducts, removeFavoriteProducts } = require('../controllers/favoriteProductsController');
 
 router.post('/findcity', (req, res, next) => {
     const { lat, lon } = req.body;
@@ -40,5 +42,11 @@ router.get('/products', (req, res, next) => {
         res.json({ status: 500, text: 'error', data: error });
     });
 })
+
+router.post('/favoriteProducts', addFavoriteProducts);
+
+router.get('/favoriteProducts', getAllFavoriteProducts);
+
+router.delete('/favoriteProducts/:id', removeFavoriteProducts);
 
 module.exports = router;

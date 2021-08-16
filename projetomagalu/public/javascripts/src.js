@@ -4,7 +4,6 @@ function setCity() {
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                console.log(position);
                 findCity(position.coords.latitude, position.coords.longitude)
             },
             (err) => {
@@ -24,14 +23,14 @@ function renderProducts(products = [], locale) {
         template.innerHTML = "";
 
         let product =
-            `<div class="product" id="${element.sku}">
+            `<div class="product">
             ${(locale) ?
                 `<div class="delete">
-                    <i class="far fa-times-circle"></i>
+                    <i class="far fa-times-circle" id="${element.sku}"></i>s
                  </div>`
                 :
                 `<div class="flag ${(false) ? 'active' : ''}">
-                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart" id="${element.sku}"></i>
                  </div>`
             }
                             
@@ -46,6 +45,7 @@ function renderProducts(products = [], locale) {
 
         document.querySelector(".products").appendChild(template.content.firstChild);
     });
+    setFavoriteEvent();
 }
 
 function clearProducts() {
@@ -69,15 +69,14 @@ function changePage(locale) {
     toggleLoad()
     document.querySelector('#search').value = ''
     if (locale) {
-        document.querySelector('#breadcumb').textContent = "Home > Lista de Desejos"
+        document.querySelector('#breadcumb').innerHTML += ` > Lista de Desejos`
         renderProducts([], locale);
         toggleLoad();
     } else {
-        document.querySelector('#breadcumb').textContent = "Home"
+        document.querySelector('#breadcumb').innerHTML = `<a href="#home" class="home">Home</a>`
         getAllProducts().then(data => {
             SCREENPRODUCTS = data.products;
             renderProducts(SCREENPRODUCTS, locale);
-            setFavoriteEvent();
             toggleLoad();
         });
     }
@@ -91,6 +90,11 @@ function toggleFavorite(element) {
         target = element.querySelector('i');
     }
     target.classList.toggle("active");
+    if (target.classList.toString().includes('active')) {
+        addFavoriteProducts(target.id);
+    } else {
+        removeFavoriteProducts(target.id);
+    }
 }
 
 function toggleLoad() {
