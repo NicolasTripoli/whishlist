@@ -1,15 +1,15 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require('cors');
-var bodyParse = require('body-parser');
+let createError = require('http-errors');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let logger = require('morgan');
+let cors = require('cors');
+let bodyParse = require('body-parser');
 
-var indexRouter = require('./routes/pages/index');
-var apiRouter = require('./routes/api');
+let indexRouter = require('./routes/pages/index');
+let apiRouter = require('./routes/api');
 
-var app = express();
+let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

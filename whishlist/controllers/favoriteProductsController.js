@@ -1,6 +1,6 @@
-var firebase = require('../db');
-var favoriteProducts = require('../models/favoriteProducts');
-var firestore = firebase.firestore();
+let firebase = require('../db');
+let favoriteProducts = require('../models/favoriteProducts');
+let firestore = firebase.firestore();
 
 const addFavoriteProducts = async (req, res, next) => {
     try {

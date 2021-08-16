@@ -1,4 +1,5 @@
-var SCREENPRODUCTS = []
+let screenproducts = []
+
 
 function setCity() {
     if ('geolocation' in navigator) {
@@ -17,7 +18,7 @@ function setCity() {
 
 function renderProducts(products = [], locale) {
     products.forEach(element => {
-        var template = document.createElement('template');
+        let template = document.createElement('template');
 
         template.innerHTML = "";
 
@@ -36,7 +37,7 @@ function renderProducts(products = [], locale) {
                 <div class="center">
                     <img src="${element.image}" alt="${element.title}" class="product-image" id="image">
                     <p id="title">${element.title}</p>
-                    <p class="price"><span id="currencyFormat">${element.currencyFormat}</span><span id="price">${element.price.toLocaleString(undefined, {minimumFractionDigits: 2})}</span></p>
+                    <p class="price"><span id="currencyFormat">${element.currencyFormat}</span><span id="price">${element.price.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span></p>
                 </div>
              </div>`;
 
@@ -55,14 +56,14 @@ function filterProducts(text) {
     const isInList = window.location.href.includes('ListadeDesejos');
 
     if (text.trim() !== "") {
-        let filter = SCREENPRODUCTS.filter((element) => {
+        let filter = screenproducts.filter((element) => {
             return (element.title.toLowerCase()).includes(text.toLowerCase());
         });
         clearProducts();
         renderProducts(filter, isInList);
     } else {
         clearProducts();
-        renderProducts(SCREENPRODUCTS, isInList);
+        renderProducts(screenproducts, isInList);
     }
 }
 
@@ -80,9 +81,9 @@ function changePage(locale) {
                     })
                     return (isFavorite) ? true : false;
                 })
-                SCREENPRODUCTS = ajustProducts;
+                screenproducts = ajustProducts;
 
-                renderProducts(SCREENPRODUCTS, locale);
+                renderProducts(screenproducts, locale);
                 toggleLoad();
             })
         })
@@ -98,12 +99,12 @@ function changePage(locale) {
                         element.favorite = (isFavorite) ? true : false;
                         return element;
                     })
-                    SCREENPRODUCTS = ajustProducts;
+                    screenproducts = ajustProducts;
                 } else {
-                    SCREENPRODUCTS = products.products;
+                    screenproducts = products.products;
                 }
 
-                renderProducts(SCREENPRODUCTS, locale);
+                renderProducts(screenproducts, locale);
                 toggleLoad();
             })
         });
@@ -121,12 +122,12 @@ function toggleFavorite(element) {
     target.classList.toggle("active");
     if (target.classList.toString().includes('active')) {
         addFavoriteProducts(target.id);
-        let index = SCREENPRODUCTS.findIndex(e=> e.sku == target.id);
-        SCREENPRODUCTS[index].favorite = true;
+        let index = screenproducts.findIndex(e => e.sku == target.id);
+        screenproducts[index].favorite = true;
     } else {
         removeFavoriteProducts(target.id);
-        let index = SCREENPRODUCTS.findIndex(e=> e.sku == target.id);
-        SCREENPRODUCTS[index].favorite = false;
+        let index = screenproducts.findIndex(e => e.sku == target.id);
+        screenproducts[index].favorite = false;
     }
 }
 

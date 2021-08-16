@@ -1,8 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var axios = require('axios');
-var express = require('express');
-var { addFavoriteProducts, getAllFavoriteProducts, removeFavoriteProducts } = require('../controllers/favoriteProductsController');
+let express = require('express');
+let router = express.Router();
+let axios = require('axios');
+let { addFavoriteProducts, getAllFavoriteProducts, removeFavoriteProducts } = require('../controllers/favoriteProductsController');
 
 router.post('/findcity', (req, res, next) => {
     const { lat, lon } = req.body;
