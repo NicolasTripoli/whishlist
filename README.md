@@ -38,5 +38,53 @@ npm start
 
 Após isso basta acessar o Link: [http://localhost:3000](http://localhost:3000)
 
+
+## API Reference
+
+#### POST City
+Retorna informações de cidade do usuário conforme a latitude e longitude informada.
+
+```http
+  POST /api/findcity
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `lat` | `number` | **Required**. Latitude|
+| `lon` | `number` | **Required**. Longitude|
+
+#### POST favorite products
+Adiciona novos produtos a lista de favoritos
+
+```http
+  POST /api/favoriteProducts
+```
+
+| Parameter | Type     | Description            |
+| :-------- | :------- | :----------------------|
+| `sku` | `number` | **Required**. SKU do produto|
+
+#### DELETE favorite products
+Remove um produto da lista de favoritos
+
+```http
+  DELETE /api/favoriteProducts/:SKU
+```
+
+#### GET favorite products
+Retorna todos os produtos salvos como favoritos.
+
+```http
+  POST /api/favoriteProducts
+```
+
+#### Get products
+
+Retorna todos os produtos disponiveis.
+
+```http
+  GET /api/products
+```
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
