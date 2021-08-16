@@ -16,7 +16,6 @@ function setCity() {
 }
 
 function renderProducts(products = [], locale) {
-    clearProducts();
     products.forEach(element => {
         var template = document.createElement('template');
 
@@ -26,11 +25,11 @@ function renderProducts(products = [], locale) {
             `<div class="product">
             ${(locale) ?
                 `<div class="delete">
-                    <i class="far fa-times-circle" id="${element.sku}"></i>s
+                    <i class="far fa-times-circle" id="${element.sku}"></i>
                  </div>`
                 :
-                `<div class="flag ${(false) ? 'active' : ''}">
-                    <i class="fas fa-heart" id="${element.sku}"></i>
+                `<div class="flag">
+                    <i class="fas fa-heart ${(element.favorite) ? 'active' : ''}" id="${element.sku}"></i>
                  </div>`
             }
                             
@@ -53,31 +52,62 @@ function clearProducts() {
 }
 
 function filterProducts(text) {
+    const isInList = window.location.href.includes('ListadeDesejos');
+
     if (text.trim() !== "") {
         let filter = SCREENPRODUCTS.filter((element) => {
             return (element.title.toLowerCase()).includes(text.toLowerCase());
         });
         clearProducts();
-        renderProducts(filter);
+        renderProducts(filter, isInList);
     } else {
         clearProducts();
-        renderProducts(SCREENPRODUCTS);
+        renderProducts(SCREENPRODUCTS, isInList);
     }
 }
 
 function changePage(locale) {
+    clearProducts()
     toggleLoad()
     document.querySelector('#search').value = ''
     if (locale) {
-        document.querySelector('#breadcumb').innerHTML += ` > Lista de Desejos`
-        renderProducts([], locale);
-        toggleLoad();
+        document.querySelector('#breadcumb').innerHTML = `<a href="#home" class="home">Home</a> > Lista de Desejos`
+        getAllProducts().then(products => {
+            getAllFavoriteProducts().then(favorites => {
+                let ajustProducts = products.products.filter(element => {
+                    let isFavorite = favorites.data.find(item => {
+                        return item.sku == element.sku;
+                    })
+                    return (isFavorite) ? true : false;
+                })
+                console.log(ajustProducts)
+                SCREENPRODUCTS = ajustProducts;
+
+                renderProducts(SCREENPRODUCTS, locale);
+                toggleLoad();
+            })
+        })
     } else {
         document.querySelector('#breadcumb').innerHTML = `<a href="#home" class="home">Home</a>`
-        getAllProducts().then(data => {
-            SCREENPRODUCTS = data.products;
-            renderProducts(SCREENPRODUCTS, locale);
-            toggleLoad();
+        getAllProducts().then(products => {
+            getAllFavoriteProducts().then(favorites => {
+                if (favorites.data.length > 0) {
+                    let ajustProducts = products.products.map(element => {
+                        let isFavorite = favorites.data.find(item => {
+                            return item.sku == element.sku;
+                        })
+                        element.favorite = (isFavorite) ? true : false
+                        return element;
+                    })
+                    console.log(ajustProducts)
+                    SCREENPRODUCTS = ajustProducts;
+                } else {
+                    SCREENPRODUCTS = products.products;
+                }
+
+                renderProducts(SCREENPRODUCTS, locale);
+                toggleLoad();
+            })
         });
     }
 }
@@ -95,6 +125,12 @@ function toggleFavorite(element) {
     } else {
         removeFavoriteProducts(target.id);
     }
+}
+
+function deleteFavorite(target) {
+    clearProducts();
+    removeFavoriteProducts(target.id);
+    changePage(true);
 }
 
 function toggleLoad() {
