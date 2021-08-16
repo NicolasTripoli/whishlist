@@ -2,7 +2,7 @@
 
 WhishList é o projeto de teste técnico para o processo seletivo da Magalu, com o conceito de "Lista de Desejos" em um portal com produtos podendo assim adicionar produtos a lista e remove-los.
 
-Por não ter especificação das funcionalidade de tela foram adicionados de acordo o layout solicitado:
+Por não ter especificação das funcionalidade de tela, foram adicionados de acordo o layout solicitado:
 - Busca de Produtos
 - Localizar cidade do usuário
 - Breadcrumb 
