@@ -14,7 +14,7 @@ Por não ter especificação das funcionalidade de tela, foram adicionados de ac
 - [Node.js](https://nodejs.org/)
 - [expres](https://expressjs.com/pt-br/)
 - [Axios](https://github.com/axios/axios)
-- [SASS/SCSS](http://localhost:3000)
+- [SASS/SCSS](https://sass-lang.com)
 - [webpack](https://webpack.js.org/)
 - [babel](https://babeljs.io/)
 - [eslint](https://eslint.org/)
