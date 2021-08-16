@@ -24,7 +24,7 @@ Por não ter especificação das funcionalidade de tela, foram adicionados de ac
 Partindo da pasta raiz após o clone.
 
 ```bash
-cd whishlist
+cd whishlist/whishlist
 npm install
 ```
 
