@@ -1,5 +1,5 @@
 class favoriteProducts {
-    constructor(id,productId, sku) {
+    constructor(id, sku) {
         this.id = id;
         this.sku = sku;
     }

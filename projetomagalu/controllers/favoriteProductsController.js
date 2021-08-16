@@ -18,7 +18,7 @@ const getAllFavoriteProducts = async (req, res, next) => {
         const data = await products.get();
         const productsArray = []
         if (data.empty) {
-            res.status(404).json({ status: 404, text: 'Error: No data found.' })
+            res.json({ status: 200, text: 'Warning: No data in data base', data: [] })
         } else {
             data.forEach((element) => {
                 const product = new favoriteProducts(
@@ -42,7 +42,7 @@ const removeFavoriteProducts = async (req, res, next) => {
             .get()
             .then(function (data) {
                 if (data.empty) {
-                    res.status(404).json({ status: 404, text: 'Error: No data found.' })
+                    res.json({ status: 200, text: 'Warning: No data in data base' })
                 } else {
                     data.forEach(function (document) {
                         document.ref.delete();

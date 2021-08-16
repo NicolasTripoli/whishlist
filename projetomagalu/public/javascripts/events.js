@@ -1,6 +1,7 @@
 window.onload = (e) => {
+    const isFirstLoadInList = window.location.href.includes('ListadeDesejos');
     setCity();
-    changePage(false);
+    changePage(isFirstLoadInList);
     setEventesHendler();
 }
 
@@ -20,6 +21,12 @@ function setFavoriteEvent() {
     document.querySelectorAll('.flag').forEach((element) => {
         element.addEventListener('click', (element) => {
             toggleFavorite(element.target)
+        }, false)
+    })
+
+    document.querySelectorAll('.fa-times-circle').forEach((element) => {
+        element.addEventListener('click', (element) => {
+            deleteFavorite(element.target)
         }, false)
     })
 
