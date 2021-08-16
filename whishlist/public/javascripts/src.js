@@ -108,6 +108,7 @@ function changePage(locale) {
             })
         });
     }
+    setBreadcumbsEvents();
 }
 
 function toggleFavorite(element) {

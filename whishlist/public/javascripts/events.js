@@ -29,7 +29,9 @@ function setFavoriteEvent() {
             deleteFavorite(element.target)
         }, false)
     })
+}
 
+function setBreadcumbsEvents() {
     document.querySelector('.home').addEventListener('click', (element) => {
         changePage(false);
     }, false)

@@ -100,7 +100,7 @@ body .search-div .search-input {
   font-family: "Font Awesome 5 Free", sans-serif;
   font-weight: 900;
   font-size: 1rem;
-  padding: 0px 1rem;
+  text-indent: 10px;
   outline: none;
 }
 body .fa-phone {
